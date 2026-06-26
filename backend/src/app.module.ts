@@ -16,6 +16,7 @@ import { Rating } from './ratings/rating.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    /*
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -29,7 +30,20 @@ import { Rating } from './ratings/rating.entity';
         entities: [User, Store, Rating],
         synchronize: true,
       }),
-    }),
+    }),*/
+    TypeOrmModule.forRootAsync({
+  imports: [ConfigModule],
+  inject: [ConfigService],
+  useFactory: (configService: ConfigService) => ({
+    type: 'postgres',
+    url: configService.get<string>('DATABASE_URL'),
+    entities: [User, Store, Rating],
+    synchronize: true,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  }),
+}),
     AuthModule,
     UsersModule,
     StoresModule,

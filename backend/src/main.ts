@@ -19,7 +19,13 @@ async function bootstrap() {
   );
 
   const port = process.env.PORT || 300;
-  await app.listen(port);
+  async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  await app.listen(process.env.PORT || 3000);
+}
+bootstrap();
+  //await app.listen(port);
   console.log(`Application running on http://localhost:${port}`);
 }
 bootstrap();
