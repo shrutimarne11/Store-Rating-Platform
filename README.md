@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Store Rating Platform
 
 A full-stack web application for submitting and managing store ratings with role-based access control.
@@ -129,3 +130,6 @@ store-rating-platform/
 See `backend/.env.example` for all backend configuration options.
 
 Frontend API URL can be set via `VITE_API_URL` (defaults to `http://localhost:3000`).
+=======
+# Store-Rating-Platform
+>>>>>>> b0b596beb5396954cdb627052f542928f8ec008c
