@@ -24,7 +24,6 @@ import { Rating } from './ratings/rating.entity';
     TypeOrmModule.forRootAsync({
   imports: [ConfigModule],
   inject: [ConfigService],
-
   useFactory: (configService: ConfigService) => ({
     type: 'postgres',
 
