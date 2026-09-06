@@ -22,39 +22,39 @@ import { Rating } from './ratings/rating.entity';
     }),
 
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
+  imports: [ConfigModule],
+  inject: [ConfigService],
 
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
+  useFactory: (configService: ConfigService) => ({
+    type: 'postgres',
 
-        host: configService.get<string>('DB_HOST', 'localhost'),
+    host: configService.get<string>('DB_HOST', 'localhost'),
 
-        port: parseInt(
-          configService.get<string>('DB_PORT', '5432'),
-          10,
-        ),
+    port: parseInt(
+      configService.get<string>('DB_PORT', '5432'),
+      10,
+    ),
 
-        username: configService.get<string>(
-          'DB_USERNAME',
-          'postgres',
-        ),
+    username: configService.get<string>(
+      'DB_USERNAME',
+      'postgres',
+    ),
 
-        password: configService.get<string>(
-          'DB_PASSWORD',
-          'postgres',
-        ),
+    password: configService.get<string>(
+      'DB_PASSWORD',
+      'postgres',
+    ),
 
-        database: configService.get<string>(
-          'DB_NAME',
-          'store_rating',
-        ),
+    database: configService.get<string>(
+      'DB_NAME',
+      'store_rating',
+    ),
 
-        entities: [User, Store, Rating],
+    entities: [User, Store, Rating],
 
-        synchronize: true,
-      }),
-    }),
+    synchronize: true,
+  }),
+}),
 
     AuthModule,
     UsersModule,
